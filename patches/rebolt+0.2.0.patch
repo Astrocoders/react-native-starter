@@ -1,0 +1,29 @@
+patch-package
+--- c/node_modules/rebolt/src/components/flatList.re
++++ i/node_modules/rebolt/src/components/flatList.re
+@@ -138,6 +138,7 @@ let make =
+       ~bounces=?,
+       ~listFooterComponent=?,
+       ~listHeaderComponent=?,
++      ~listEmptyComponent=?,
+       ~columnWrapperStyle=?,
+       ~extraData=?,
+       ~getItemLayout=?,
+@@ -171,6 +172,7 @@ let make =
+           "bounces": fromOption(UtilsRN.optBoolToOptJsBoolean(bounces)),
+           "ItemSeparatorComponent": fromOption(itemSeparatorComponent),
+           "ListFooterComponent": fromOption(listFooterComponent),
++          "ListEmptyComponent": fromOption(listEmptyComponent),
+           "ListHeaderComponent": fromOption(listHeaderComponent),
+           "columnWrapperStyle": fromOption(columnWrapperStyle),
+           "data": data,
+--- c/node_modules/rebolt/src/components/flatList.rei
++++ i/node_modules/rebolt/src/components/flatList.rei
+@@ -46,6 +46,7 @@ let make:
+     ~bounces: bool=?,
+     ~listFooterComponent: ReasonReact.reactElement=?,
+     ~listHeaderComponent: ReasonReact.reactElement=?,
++    ~listEmptyComponent: ReasonReact.reactElement=?,
+     ~columnWrapperStyle: Style.t=?,
+     ~extraData: 'any=?,
+     ~getItemLayout: (option(array('item)), int) => {. "length": int, "offset": int, "index": int}=?,

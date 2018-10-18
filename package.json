@@ -1,0 +1,95 @@
+{
+  "name": "rnStarter",
+  "version": "1.0.0",
+  "private": false,
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.4.8",
+    "@storybook/addon-links": "^3.4.8",
+    "@storybook/addons": "^3.4.8",
+    "@storybook/react-native": "^3.4.8",
+    "babel-core": "^6.26.3",
+    "babel-preset-react-native-stage-0": "^1.0.1",
+    "babel-runtime": "^6.26.0",
+    "chalk": "^2.4.1",
+    "common-tags": "^1.8.0",
+    "jest": "^23.4.1",
+    "jest-react-native": "^18.0.0",
+    "let-anything": "jaredly/let-anything",
+    "lint-staged": "^7.2.0",
+    "patch-package": "^5.1.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.13.7",
+    "prop-types": "^15.6.2",
+    "react-dom": "16.3.1",
+    "react-test-renderer": "16.3.1"
+  },
+  "rnpm": {
+    "assets": [
+      "re/fonts"
+    ]
+  },
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "android:clean": "cd android && ./gradlew clean",
+    "android:debug:install": "cd android && adb install app/build/outputs/apk/app-debug.apk",
+    "android:install": "adb install android/app/build/outputs/apk/release/app-release.apk",
+    "android:release:generate": "yarn bs:build && cd android && ./gradlew assembleRelease",
+    "android:reverse": "adb reverse tcp:7007 tcp:7007 && adb reverse tcp:8081 tcp:8081 && adb reverse tcp:8000 tcp:8000",
+    "ios": "open ios/rnStarter.xcworkspace",
+    "ios:clear": "cd ios && rm -rf build",
+    "rn:link": "react-native link",
+    "test": "bsb -make-world",
+    "bs:build": "bsb -make-world -clean-world",
+    "bs:watch": "bsb -make-world -clean-world -w",
+    "lint:staged": "lint-staged",
+    "storybook": "storybook start -p 7007",
+    "postinstall": "patch-package"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "dependencies": {
+    "@expo/react-native-action-sheet": "^1.1.2",
+    "@fnando/cpf": "^0.1.0",
+    "@gabrielrubens/bs-numeral": "^0.1.1",
+    "bs-abstract": "^0.16.0",
+    "bs-css": "^7.2.0",
+    "bs-moment": "^0.3.1",
+    "bs-platform": "^4.0.6",
+    "bs-react-native-paper": "^4.0.1-beta.20",
+    "bs-react-native-vector-icons": "^2.0.0-beta.3",
+    "bs-reform": "^5.1.1-beta.4",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "lodash": "^4.17.11",
+    "numeral": "^2.0.6",
+    "re-containers": "^1.0.3-beta.2",
+    "react": "16.3.1",
+    "react-native": "0.55.3",
+    "react-native-camera": "^1.2.0",
+    "react-native-dotenv": "^0.2.0",
+    "react-native-fetch-blob": "^0.10.8",
+    "react-native-gesture-handler": "^1.0.7",
+    "react-native-maps": "^0.22.0",
+    "react-native-tags": "^1.5.0",
+    "react-native-vector-icons": "^5.0.0",
+    "reason-react": "^0.5.3",
+    "rebolt": "^0.2.0",
+    "rebolt-navigation": "Astrocoders/rebolt-navigation#c7cffac4a8db6fbe5cb2c8b32b11dc350ecca48b",
+    "recompose": "^0.30.0",
+    "subscriptions-transport-ws": "^0.9.13",
+    "vanilla-masker": "^1.2.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote true --trailing-comma all --print-width 80 --semi false",
+      "git add"
+    ],
+    "*.re": [
+      "refmt --in-place",
+      "git add"
+    ]
+  },
+  "pre-commit": "lint:staged"
+}

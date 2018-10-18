@@ -1,0 +1,43 @@
+{
+  "name": "rnStarter",
+  "namespace": true,
+  "reason": {
+    "react-jsx": 2
+  },
+  "bsc-flags": ["-bs-super-errors"],
+  "bs-dependencies": [
+    "rebolt",
+    "reason-react",
+    "@gabrielrubens/bs-numeral",
+    "bs-react-native-paper",
+    "bs-react-native-vector-icons",
+    "rebolt-navigation",
+    "re-containers",
+    "bs-css",
+    "bs-reform",
+    "bs-moment",
+    "bs-abstract"
+  ],
+  "sources": [
+    {
+      "dir": "re",
+      "subdirs": [
+        { "dir": "types" },
+        { "dir": "scenes" },
+        { "dir": "components" }
+      ]
+    },
+    {
+      "dir": "storybook/stories"
+    }
+  ],
+  "refmt": 3,
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "warnings": {
+    "error": "+8"
+  },
+  "suffix": ".bs.js"
+}
